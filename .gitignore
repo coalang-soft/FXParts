@@ -2,3 +2,5 @@ bin
 .classpath
 .gitattributes
 .project
+.idea/
+FXParts.iml
