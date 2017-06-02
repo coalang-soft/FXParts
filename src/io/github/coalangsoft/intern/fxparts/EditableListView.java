@@ -12,7 +12,7 @@ public class EditableListView<T> extends ListView<T> {
 			public ListCell<T> call(final ListView<T> lv) {
 				return new EditableListCell<T>();
 			}
-		});		
+		});
 	}
 	
 }

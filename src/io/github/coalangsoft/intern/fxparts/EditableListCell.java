@@ -29,7 +29,8 @@ public class EditableListCell<T> extends ListCell<T> {
 					});
 					
 					p.setRight(b);
-					p.setLeft(n instanceof Node ? (Node) n : new Label(n.toString()));
+					Node base = n instanceof Node ? (Node) n : new Label(n.toString());
+					p.setLeft(base);
 					setGraphic(p);
 				}else{
 					setGraphic(null);
