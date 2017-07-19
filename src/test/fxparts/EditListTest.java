@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,13 +16,6 @@ public class EditListTest extends Application {
 
 	@Override
 	public void start(Stage s) throws Exception {
-		URL u = new URL("https://mrbjarnelp.jimdo.com");
-
-		TextArea a = new TextArea();
-
-		new StreamLineCopyService(u.openStream(), new StringPropertyOutputStream(a.textProperty())).start();
-
-		s.setScene(new Scene(a));
 		s.show();
 	}
 
