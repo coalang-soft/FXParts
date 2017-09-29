@@ -1,4 +1,6 @@
-package io.github.coalangsoft.intern.fxparts;
+package io.github.coalangsoft.intern.fxparts.input;
+
+import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -8,12 +10,19 @@ import javafx.util.Callback;
 
 public class KeyCombinationHandler implements EventHandler<KeyEvent> {
 
-	private KeyCombination combi;
-	private Callback<KeyEvent, Void> action;
+	private ArrayList<KeyCombination> combi;
+	private ArrayList<Callback<KeyEvent, Void>> action;
 	
 	public KeyCombinationHandler(KeyCombination c, Callback<KeyEvent, Void> action){
-		this.combi = c;
-		this.action = action;
+		this.combi = new ArrayList<>();
+		this.combi.add(c);
+		this.action = new ArrayList<>();
+		this.action.add(action);
+	}
+	
+	public void addAction(KeyCombination c, Callback<KeyEvent, Void> action){
+		this.combi.add(c);
+		this.action.add(action);
 	}
 	
 	public static KeyCombinationHandler focus(final Node n, KeyCombination c){
@@ -28,8 +37,10 @@ public class KeyCombinationHandler implements EventHandler<KeyEvent> {
 	
 	@Override
 	public void handle(KeyEvent arg0) {
-		if(combi.match(arg0)){
-			action.call(arg0);
+		for(int i = 0; i < combi.size(); i++){
+			if(combi.get(i).match(arg0)){
+				action.get(i).call(arg0);
+			}
 		}
 	}
 

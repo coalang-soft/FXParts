@@ -1,4 +1,4 @@
-package io.github.coalangsoft.intern.fxparts;
+package io.github.coalangsoft.intern.fxparts.media;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
