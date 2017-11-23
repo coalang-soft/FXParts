@@ -14,10 +14,10 @@ import javafx.util.Callback;
 
 public class MediaBackground {
 	
-	public static void applyMusic(Media m, Region r, Callback<Image, Object> afterSet){
+	public static void applyMusic(Callback<Image,Image> imageModifier, Media m, Region r, Callback<Image, Object> afterSet){
 		Image i = (Image) m.getMetadata().get("image");
 		if(i != null){
-			BackgroundImage bgi = new BackgroundImage(i,
+			BackgroundImage bgi = new BackgroundImage(imageModifier.call(i),
 					BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 			Background b = new Background(bgi);
 			r.backgroundProperty().bind(new SimpleObjectProperty<>(b));
@@ -36,6 +36,10 @@ public class MediaBackground {
 				}
 			});
 		}
+	}
+	
+	public static void applyMusic(Media m, Region r, Callback<Image,Object> afterSet){
+		applyMusic((i) -> i, m,r,afterSet);
 	}
 	
 	public static void applyMusic(Media m, Region r){

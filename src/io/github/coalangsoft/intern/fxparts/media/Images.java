@@ -1,8 +1,11 @@
 package io.github.coalangsoft.intern.fxparts.media;
 
+import io.github.coalangsoft.intern.fxparts.Shapes;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 public class Images {
 	
@@ -22,6 +25,12 @@ public class Images {
 		}
 		
 		return new Color(r / count, g / count, b / count, 1);
+	}
+	
+	public static Image round(Image i, double radius){
+		Rectangle r = Shapes.roundedRectangle(i.getWidth(), i.getHeight(), radius);
+		r.setFill(new ImagePattern(i));
+		return r.snapshot(null, null);
 	}
 	
 }
